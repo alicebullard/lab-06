@@ -27,7 +27,16 @@ diamonds <- diamonds %>% rename(
 ## Exercise 1
 
 ```{r}
-# Do some preliminary investigations & cleaning
+#diamonds_tidy <- diamonds %>%
+#  numbers <- c("Fair" = 1, "Good" = 2, "Very Good" = 3, "Premium" = 4, "Ideal" = #5)
+#  cut_int <- factor(cut, )
+
+diamonds %>%
+  mutate(price_rounded = signif(price, digits = 3))%>%
+  group_by(price_rounded) %>%
+  summarise(carat = mean(carat)) %>%
+  ggplot() +
+  geom_line(mapping = aes(x = price_rounded, y = carat))
 
 
 
